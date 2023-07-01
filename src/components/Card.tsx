@@ -1,4 +1,6 @@
+import animationVariant from '../utils/animation'
 import { Social } from '../utils/cms'
+import { motion } from 'framer-motion'
 
 type props = {
   social: Social
@@ -7,7 +9,12 @@ type props = {
 function Card({ social }: props) {
   return (
     <a href={social.url}>
-      <div className='cursor-pointer overflow-hidden rounded-lg'>
+      <motion.div
+        className='cursor-pointer overflow-hidden rounded-lg'
+        variants={animationVariant}
+        initial='initial'
+        animate='animate'
+      >
         <div
           style={{
             color: social.color,
@@ -23,7 +30,7 @@ function Card({ social }: props) {
 
           <p className='text-sm text-gray-400'>{social.description}</p>
         </div>
-      </div>
+      </motion.div>
     </a>
   )
 }
